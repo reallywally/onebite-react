@@ -1,17 +1,23 @@
 import "./App.css";
-import Header from "./components/Header.jsx";
-import Main from "./components/Main.jsx";
-import Footer from "./components/Footer.jsx";
-import Button from "./components/Button.jsx";
+import { useState } from "react";
 
 function App() {
+  // state 현재값, 싱태 변화 함수
+  // 변수와 차이는 리렌더링
+  const [count, setCount] = useState(1);
+  const [light, setLight] = useState("OFF");
+
+  console.log(count);
+
   return (
     <>
-      <Button text={"메일"} color={"red"} />
-      <Button text={"카페"} />
-      <Button text={"블로그"}>
-        <div> 자식</div>
-      </Button>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}> + </button>
+
+      <h1>{light}</h1>
+      <button onClick={() => setLight(light === "OFF" ? "ON" : "OFF")}>
+        on/off
+      </button>
     </>
   );
 }
