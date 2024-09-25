@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Register = () => {
   // 하나의 state로 관리
@@ -8,24 +8,30 @@ const Register = () => {
     country: "",
     bio: "",
   });
-  /*
-  const [name, setName] = useState("이름");
-  const [birth, setBirth] = useState("");
-  const [country, setCountry] = useState("");
-  const [bio, setBio] = useState("");
-  */
-  console.log(input);
+
+  const countRef = useRef(0);
+  const inputRef = useRef();
+
   const onChange = (e) => {
+    countRef.current++;
+
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
   };
 
+  const onSubmit = () => {
+    if (input.name === "") {
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <div>
       <div>
         <input
+          ref={inputRef}
           name="name"
           value={input.name}
           onChange={onChange}
@@ -54,6 +60,8 @@ const Register = () => {
       <div>
         <textarea name="bio" value={input.bio} onChange={onChange}></textarea>
       </div>
+
+      <button onClick={onSubmit}>제출</button>
     </div>
   );
 };
