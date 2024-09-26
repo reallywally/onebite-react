@@ -1,6 +1,21 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+
+// hook 특징
+// 1. 함수 컴포넌트, 커스텀 훅 내부에서만 호출 가능
+// 2. 조건문, 반복문에서 호출 불가능
+// 3. 커스텀 훅은 접두사로 use만 붙이면됨. 그리고 보통 커스텀 훅은 hooks라는 폴더 만들어서 관리
 
 const Register = () => {
+  // 라이프 사이클
+  // 1. 마운트
+  useEffect(() => {}, []);
+  // 2. 업데이트
+  useEffect(() => {});
+  // 3. 언마운트
+  useEffect(() => {
+    return () => {};
+  }, []);
+
   // 하나의 state로 관리
   const [input, setInput] = useState({
     name: "",
