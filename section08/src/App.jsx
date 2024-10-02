@@ -40,11 +40,24 @@ function App() {
     setTodos([newTodo, ...todos]); //todos.push() 노노
   };
 
+  const onUpdate = (targetId) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === targetId
+          ? {
+              ...todo,
+              isDone: !todo.isDone,
+            }
+          : todo
+      )
+    );
+  };
+
   return (
     <>
       <Header />
       <Editor onCreate={onCreate} />
-      <List todos={todos} />
+      <List todos={todos} onUpdate={onUpdate} />
     </>
   );
 }
