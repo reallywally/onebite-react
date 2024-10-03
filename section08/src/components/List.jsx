@@ -2,7 +2,7 @@ import "./List.css";
 import TodoItem from "./TodoItem";
 import { useState } from "react";
 
-const List = ({ todos, onUpdate }) => {
+const List = ({ todos, onUpdate, onDelete }) => {
   const [search, setSearch] = useState("");
 
   const onChangeSearch = (e) => {
@@ -31,7 +31,14 @@ const List = ({ todos, onUpdate }) => {
       />
       <div className="todos_warpper">
         {filteredTodos.map((todo) => {
-          return <TodoItem key={todo.id} {...todo} onUpdate={onUpdate} />; // 반복문 할때는 반드시 key 추가
+          return (
+            <TodoItem
+              key={todo.id}
+              {...todo}
+              onUpdate={onUpdate}
+              onDelete={onDelete}
+            />
+          ); // 반복문 할때는 반드시 key 추가
         })}
       </div>
     </div>
