@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
-        <Route path="/dirary" element={<Diary />} />
+        <Route path="/dirary/:id" element={<Diary />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
     </>
