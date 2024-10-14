@@ -6,6 +6,8 @@ import New from "./pages/New";
 import Notfound from "./pages/Notfound";
 
 import { getEmotionImage } from "./util/get-emotion-image";
+import Button from "./commponents/Button";
+import Header from "./commponents/Header";
 
 function App() {
   const nav = useNavigate();
@@ -16,6 +18,19 @@ function App() {
 
   return (
     <>
+      <Header
+        title={"Header"}
+        leftChild={<Button text={"Left"} />}
+        rightChild={<Button text={"Right"} />}
+      />
+
+      <Button
+        text={"aaa"}
+        type={"POSITIVE"}
+        onClick={() => {
+          console.log("aaa");
+        }}
+      />
       <div>
         <img src={getEmotionImage(1)} />
       </div>
