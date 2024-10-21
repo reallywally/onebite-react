@@ -1,5 +1,6 @@
 import "./Editor.css";
 import EmotionItem from "./EmotionItem.";
+import Button from "./Button";
 
 const emotionList = [
   { emotionId: 1, emotionName: "완전 좋음" },
@@ -10,6 +11,8 @@ const emotionList = [
 ];
 
 const Editor = () => {
+  const emotionId = 4;
+
   return (
     <div className="Editor">
       <section className="date_section">
@@ -20,12 +23,22 @@ const Editor = () => {
         <h4>오늘의 감정</h4>
         <div className="emotion_list_wrapper">
           {emotionList.map((item) => (
-            <EmotionItem key={item.emotionId} {...item} />
+            <EmotionItem
+              key={item.emotionId}
+              {...item}
+              isSelected={item.emotionId === emotionId}
+            />
           ))}
         </div>
       </section>
-      <section className="content_section"></section>
-      <section className="button_section"></section>
+      <section className="content_section">
+        <h4>오늘의 일기</h4>
+        <textarea placeholder="오늘은 어땟나요"></textarea>
+      </section>
+      <section className="button_section">
+        <Button text={"취소하기"} />
+        <Button text={"작성완료"} type={"POSITIVE"} />
+      </section>
     </div>
   );
 };
